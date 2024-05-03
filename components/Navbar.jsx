@@ -9,8 +9,8 @@ const Navbar = () => {
                         <Image
                             src="/logo.svg"
                             alt="Eventry"
-                            width={100}
-                            height={45}
+                            width={150}
+                            height={60}
                         />
                     </a>
                 </div>
