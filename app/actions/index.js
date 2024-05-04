@@ -3,6 +3,7 @@
 import {
     createUser,
     fundUserByCredentials,
+    updateGoing,
     updateInterest,
     updatedInterestedId,
 } from "@/db/quires";
@@ -39,4 +40,16 @@ async function addInterestedEvent(eventId, authId) {
     revalidatePath("/");
 }
 
-export { registerUser, LoginUser, addInterestedEvent };
+// payment
+async function addGoingEvent(eventId, user) {
+    try {
+        await updateGoing(eventId, user?._id);
+    } catch (error) {
+        throw new Error(error.message);
+    }
+
+    revalidatePath("/");
+    redirect("/");
+}
+
+export { registerUser, LoginUser, addInterestedEvent, addGoingEvent };
