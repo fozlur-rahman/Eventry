@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@plaiceholder/next": "^3.0.0",
     "lodash": "^4.17.21",
     "mongoose": "^8.3.3",
     "next": "14.1.4",
+    "plaiceholder": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "resend": "^3.2.0"
+    "resend": "^3.2.0",
+    "sharp": "^0.33.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

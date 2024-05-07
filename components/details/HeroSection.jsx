@@ -1,7 +1,9 @@
 import Image from "next/image";
 import ActionsButton from "../ActionsButton";
+import { getBlurData } from "@/utils/blur-genarator";
 
-const HeroSection = ({ event }) => {
+const HeroSection = async ({ event }) => {
+    const { base64 } = await getBlurData(event?.imageUrl);
     return (
         <section className="container">
             <div className="bg-gradient-to-b from-slate-200/20 to-slate-800/30">
@@ -11,6 +13,8 @@ const HeroSection = ({ event }) => {
                     className="h-[450px] mx-auto"
                     width={900}
                     height={900}
+                    placeholder="blur"
+                    blurDataURL={base64}
                 />
             </div>
 
@@ -21,17 +25,17 @@ const HeroSection = ({ event }) => {
                         {event.location}
                     </p>
                     <div className="text-[#737373] text-sm mt-1">
-                        <span>{event.interested_ids} Interested</span>
+                        <span>{event.interested_ids.length} Interested</span>
                         <span> | </span>
-                        <span>{event.going_ids} Going</span>
+                        <span>{event.going_ids.length} Going</span>
                     </div>
                 </div>
 
                 <ActionsButton
                     eventId={event?.id}
                     interestedUserIds={event?.interested_ids}
-                    formDetails={true}
                     addGoingIds={event?.going_ids}
+                    formDetails={true}
                 />
             </div>
         </section>

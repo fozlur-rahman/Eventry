@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import ActionsButton from "../ActionsButton";
 import Link from "next/link";
 import EventSchemaScripts from "../meta/EventSchemaScripts";
