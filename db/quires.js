@@ -7,8 +7,15 @@ import {
 import mongoose from "mongoose";
 
 // find events
-async function getAllEvents() {
-    const allEvents = await eventModel.find().lean();
+async function getAllEvents(searchQuery) {
+    let allEvents = [];
+    if (searchQuery) {
+        const regex = new RegExp(searchQuery, "i");
+        allEvents = await eventModel.find({ name: { $regex: regex } }).lean();
+    } else {
+        allEvents = await eventModel.find().lean();
+    }
+
     return repleceMongoDbIdArray(allEvents);
 }
 
